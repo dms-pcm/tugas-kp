@@ -1,0 +1,768 @@
+html{
+    scroll-behavior:smooth;
+    box-sizing:border-box;
+}
+body{
+    position: relative;
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+.dropdown-isi{
+    display: none;
+    font-size: 14px;
+    position: absolute;
+    background-color: #fff;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    right: 12px;
+    border-radius: 6px;
+}
+.dropdown-navbar:hover .dropdown-isi {
+    display: block;
+}
+@media screen and (min-width: 320px) and (max-width: 363px) {
+    #title-none{
+        display:none !important;
+    }
+    .symbol.symbol-circle{
+        border: 3px solid #fff;
+    }
+    .size-fs{
+        font-size:9.5px !important;
+    }
+    #color-name{
+        color:#fff;
+    }
+    #button-web{
+        display:none !important;
+    }
+    .href:last-child{
+        margin-bottom: 70px !important;
+    }
+    #edit{
+        display:none !important;
+    }
+    #kt_toolbar_container{
+        display:none !important;
+    }
+    #kt_toolbar{
+        display:none !important;
+    }
+    .post{
+        margin-top:0px !important;
+    }
+    .mobile{
+        width:100px !important;
+        height:75px !important;
+        object-fit: cover !important;
+    }
+
+    .post .container-xxl{
+        overflow-x:hidden;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    div.gallery{
+    padding:0 !important;
+    margin:0 !important;
+    flex: none;
+    }
+
+    div.gallery img {
+        width: 100px;
+        margin:5px 2px 5px 7px;
+        height: 100px;
+    }
+
+    #card{
+        position: relative;
+        overflow:hidden;
+        background:transparent;
+        height: 250px !important;
+        border-radius: 0 0 10% 10% !important;
+        max-width: 100% !important;
+    }
+    #card #pp{
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+        border-radius: 0 0 10% 10% !important;
+    }
+
+    #card #card-body{
+        position: absolute;
+        top: 0px !important;
+        width: 100% !important;
+        height: 100% !important;
+        overflow: hidden !important;
+        background: rgba(9, 14 , 20, 0.45);
+    }
+
+    .main-box {
+        padding: 0px;
+    }
+    .main-box .row-responsive{
+        margin: 0;
+    }
+    .main-box .col-responsive{
+        padding: 0;
+    }
+    .main-box .title-page {
+        font-size: 22px;
+    }
+    .body-post .post-foto img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-left: 4px;
+    }
+    .main-box .head-post {
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 4px 0 0 0;
+    }
+    .main-box .main-page{
+        padding: 5px;
+    }
+    .main-box .body-post {
+        margin: 0px 0 0px 0px;
+        justify-content: normal;
+        width:100%;
+        max-height:100%;
+        display:inline-flex;
+        overflow:hidden;
+    }
+    .body-post .post-foto {
+        width: 119px;
+        height: 108px;
+        margin-right: 1px;
+        margin-bottom: 1px;
+    }
+    .body-post .post-foto:last-child{
+        margin-bottom:65px;
+    }
+}
+
+@media screen and (min-width: 363px) and (max-width: 381px) {
+    #title-none{
+        display:none !important;
+    }
+    .symbol.symbol-circle{
+        border: 3px solid #fff;
+    }
+    .size-fs{
+        font-size:9.5px !important;
+    }
+    #color-name{
+        color:#fff;
+    }
+    #button-web{
+        display:none !important;
+    }
+    .href:last-child{
+        margin-bottom: 70px !important;
+    }
+    #edit{
+        display:none !important;
+    }
+    #kt_toolbar_container{
+        display:none !important;
+    }
+    #kt_toolbar{
+        display:none !important;
+    }
+    .post{
+        margin-top:0px !important;
+    }
+    .mobile{
+        width:100px !important;
+        height:75px !important;
+        object-fit: cover !important;
+    }
+
+    .post .container-xxl{
+        overflow-x:hidden;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    div.gallery{
+    padding:0 !important;
+    margin:0 !important;
+    flex: none;
+    }
+
+    div.gallery img {
+        width: 100px;
+        margin:5px 2px 5px 7px;
+        height: 100px;
+    }
+
+    #card{
+        position: relative;
+        overflow:hidden;
+        background:transparent;
+        height: 250px !important;
+        border-radius: 0 0 10% 10% !important;
+        max-width: 100% !important;
+    }
+    #card #pp{
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+        border-radius: 0 0 10% 10% !important;
+    }
+
+    #card #card-body{
+        position: absolute;
+        top: 0px !important;
+        width: 100% !important;
+        height: 100% !important;
+        overflow: hidden !important;
+        background: rgba(9, 14 , 20, 0.45);
+    }
+
+    .main-box {
+        padding: 0px;
+    }
+    .main-box .row-responsive{
+        margin: 0;
+    }
+    .main-box .col-responsive{
+        padding: 0;
+    }
+    .main-box .title-page {
+        font-size: 22px;
+    }
+    .body-post .post-foto img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-left: 4px;
+    }
+    .main-box .head-post {
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 4px 0 0 0;
+    }
+    .main-box .main-page{
+        padding: 5px;
+    }
+    .main-box .body-post {
+        margin: 0px 0 0px 0px;
+        justify-content: normal;
+        width:100%;
+        max-height:100%;
+        display:inline-flex;
+        overflow:hidden;
+    }
+    .body-post .post-foto {
+        width: 122px;
+        height: 111px;
+        margin-right: 1px;
+        margin-bottom: 1px;
+    }
+    .body-post .post-foto:last-child{
+        margin-bottom:65px;
+    }
+}
+
+@media screen and (min-width: 381px) and (max-width: 389px) {
+    #title-none{
+        display:none !important;
+    }
+    .symbol.symbol-circle{
+        border: 3px solid #fff;
+    }
+    .size-fs{
+        font-size:9.5px !important;
+    }
+    #color-name{
+        color:#fff;
+    }
+    #button-web{
+        display:none !important;
+    }
+    .href:last-child{
+        margin-bottom: 70px !important;
+    }
+    #edit{
+        display:none !important;
+    }
+    #kt_toolbar_container{
+        display:none !important;
+    }
+    #kt_toolbar{
+        display:none !important;
+    }
+    .post{
+        margin-top:0px !important;
+    }
+    .mobile{
+        width:100px !important;
+        height:75px !important;
+        object-fit: cover !important;
+    }
+
+    .post .container-xxl{
+        overflow-x:hidden;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    div.gallery{
+    padding:0 !important;
+    margin:0 !important;
+    flex: none;
+    }
+
+    div.gallery img {
+        width: 100px;
+        margin:5px 2px 5px 7px;
+        height: 100px;
+    }
+
+    #card{
+        position: relative;
+        overflow:hidden;
+        background:transparent;
+        height: 250px !important;
+        border-radius: 0 0 10% 10% !important;
+        max-width: 100% !important;
+    }
+    #card #pp{
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+        border-radius: 0 0 10% 10% !important;
+    }
+
+    #card #card-body{
+        position: absolute;
+        top: 0px !important;
+        width: 100% !important;
+        height: 100% !important;
+        overflow: hidden !important;
+        background: rgba(9, 14 , 20, 0.45);
+    }
+
+    .main-box {
+        padding: 0px;
+    }
+    .main-box .row-responsive{
+        margin: 0;
+    }
+    .main-box .col-responsive{
+        padding: 0;
+    }
+    .main-box .title-page {
+        font-size: 22px;
+    }
+    .body-post .post-foto img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-left: 4px;
+    }
+    .main-box .head-post {
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 4px 0 0 0;
+    }
+    .main-box .main-page{
+        padding: 5px;
+    }
+    .main-box .body-post {
+        margin: 0px 0 0px 0px;
+        justify-content: normal;
+        width:100%;
+        max-height:100%;
+        display:inline-flex;
+        overflow:hidden;
+    }
+    .body-post .post-foto {
+        width: 129px;
+        height: 118px;
+        margin-right: 1px;
+        margin-bottom: 1px;
+    }
+    .body-post .post-foto:last-child{
+        margin-bottom:65px;
+    }
+}
+
+@media screen and (min-width: 389px) and (max-width: 428px) {
+    #title-none{
+        display:none !important;
+    }
+    .symbol.symbol-circle{
+        border: 3px solid #fff;
+    }
+    .size-fs{
+        font-size:9.5px !important;
+    }
+    #color-name{
+        color:#fff;
+    }
+    #button-web{
+        display:none !important;
+    }
+    .href:last-child{
+        margin-bottom: 70px !important;
+    }
+    #edit{
+        display:none !important;
+    }
+    #kt_toolbar_container{
+        display:none !important;
+    }
+    #kt_toolbar{
+        display:none !important;
+    }
+    .post{
+        margin-top:0px !important;
+    }
+    .mobile{
+        width:100px !important;
+        height:75px !important;
+        object-fit: cover !important;
+    }
+
+    .post .container-xxl{
+        overflow-x:hidden;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    div.gallery{
+    padding:0 !important;
+    margin:0 !important;
+    flex: none;
+    }
+
+    div.gallery img {
+        width: 100px;
+        margin:5px 2px 5px 7px;
+        height: 100px;
+    }
+
+    #card{
+        position: relative;
+        overflow:hidden;
+        background:transparent;
+        height: 250px !important;
+        border-radius: 0 0 10% 10% !important;
+        max-width: 100% !important;
+    }
+    #card #pp{
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+        border-radius: 0 0 10% 10% !important;
+    }
+
+    #card #card-body{
+        position: absolute;
+        top: 0px !important;
+        width: 100% !important;
+        height: 100% !important;
+        overflow: hidden !important;
+        background: rgba(9, 14 , 20, 0.45);
+    }
+
+    .main-box {
+        padding: 0px;
+    }
+    .main-box .row-responsive{
+        margin: 0;
+    }
+    .main-box .col-responsive{
+        padding: 0;
+    }
+    .main-box .title-page {
+        font-size: 22px;
+    }
+    .body-post .post-foto img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-left: 4px;
+    }
+    .main-box .head-post {
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 4px 0 0 0;
+    }
+    .main-box .main-page{
+        padding: 5px;
+    }
+    .main-box .body-post {
+        margin: 0px 0 0px 0px;
+        justify-content: normal;
+        width:100%;
+        max-height:100%;
+        display:inline-flex;
+        overflow:hidden;
+    }
+    .body-post .post-foto {
+        width: 130px;
+        height: 119px;
+        margin-right: 1px;
+        margin-bottom: 1px;
+    }
+    .body-post .post-foto:last-child{
+        margin-bottom:65px;
+    }
+}
+
+@media screen and (min-width: 429px) and (max-width: 889px) {
+    #title-none{
+        display:none !important;
+    }
+    .symbol.symbol-circle{
+        border: 3px solid #fff;
+    }
+    .size-fs{
+        font-size:9.5px !important;
+    }
+    #color-name{
+        color:#fff;
+    }
+    #button-web{
+        display:none !important;
+    }
+    .href:last-child{
+        margin-bottom: 70px !important;
+    }
+    #edit{
+        display:none !important;
+    }
+    #kt_toolbar_container{
+        display:none !important;
+    }
+    #kt_toolbar{
+        display:none !important;
+    }
+    .post{
+        margin-top:0px !important;
+    }
+    .mobile{
+        width:100px !important;
+        height:75px !important;
+        object-fit: cover !important;
+    }
+
+    .post .container-xxl{
+        overflow-x:hidden;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    div.gallery{
+    padding:0 !important;
+    margin:0 !important;
+    flex: none;
+    }
+
+    div.gallery img {
+        width: 100px;
+        border: 1px solid #fff;
+        margin:0px 1px 0px -1px;
+        height: 100px;
+    }
+
+    #card{
+        position: relative;
+        overflow:hidden;
+        background:transparent;
+        height: 250px !important;
+        border-radius: 0 0 10% 10% !important;
+        max-width: 100% !important;
+    }
+    #card #pp{
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+        border-radius: 0 0 10% 10% !important;
+    }
+
+    #card #card-body{
+        position: absolute;
+        top: 0px !important;
+        width: 100% !important;
+        height: 100% !important;
+        overflow: hidden !important;
+        background: rgba(9, 14 , 20, 0.45);
+    }
+
+    .main-box {
+        padding: 0px;
+    }
+    .main-box .row-responsive{
+        margin: 0;
+    }
+    .body-post .post-foto img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-left:4px;
+    }
+    .main-box .col-responsive{
+        padding: 0;
+    }
+    .main-box .title-page {
+        font-size: 22px;
+    }
+    .main-box .head-post {
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 4px 0 0 0;
+    }
+    .main-box .main-page{
+        padding: 5px;
+    }
+    .main-box .body-post {
+        margin: 0px 0 0px 0px;
+        justify-content: normal;
+        width:100%;
+        max-height:100%;
+        display:inline-flex;
+        overflow:hidden;
+    }
+    .body-post .post-foto {
+        width: 122px;
+        height: 108px;
+        margin-right: 1px;
+        margin-bottom: 1px;
+    }
+    .body-post .post-foto:last-child{
+        margin-right: 0px;
+        justify-content: normal;
+    }
+}
+
+@media screen and (min-width: 890px) {
+    .mobile{
+        width:100px !important;
+        height:95px !important;
+        object-fit: cover !important;
+    }
+    .symbol.symbol-circle{
+        border: 3px solid #000;
+    }
+    #dots{
+        display:none !important;
+    }
+    #hidden{
+        display:none !important;
+    }
+    #web{
+        width:14% !important;
+    }
+    #color{
+        color:#000 !important;
+    }
+    div.gallery{
+    padding:0 !important;
+    margin:0 !important;
+    flex: none;
+    }
+    
+    div.gallery img {
+        width: 100px;
+        margin:5px 1px 5px 6px;
+        height: 100px;
+    }
+    .app-bar{
+        display:none !important;
+    }
+    #card #pp{
+        display:none !important;
+    }
+    .main-box .head-post{
+        max-width: 100%;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+    .head-post .btn-post{
+        color: #fff;
+        background: rgb(253,200,48);
+        border-radius: 50px;
+    }
+    .head-post a{
+        font-size: 22px;
+        color: #1488cc;
+    }
+    .head-post .btn-post:hover{
+        box-shadow: 0px 4px 10px rgb(243,157,49);
+    }
+    .head-post .detail-post{
+        display: flex;
+        align-items: center;
+    }
+    .detail-post .dots{
+        height: 2.5px;
+        width: 6px;
+        background-color: #3F4658;
+        display: inline-block;
+        margin: 0 6px;
+    }
+    .detail-post .count-post{
+        color: #ababab;
+        font-weight: 500;
+        font-family: 'Montserrat', sansnserif;
+    }
+    .main-box .body-post{
+        width: 100%;
+        max-height: 100%;
+        display: inline-flex;
+        overflow: hidden;
+        margin: 0px 0 0px 11px;
+    }
+    .main-box .main-page{
+        padding: 2rem 0.25rem !important;
+    }
+    .body-post .post-foto{
+        width: 160px;
+        height: 140px;
+        background: #eee;
+        margin: 0 2px 2px 0;
+        overflow: hidden;
+    }
+    .body-post .post-foto:last-child{
+        margin-right: 0;
+    }
+    .body-post .post-foto img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .sampul{
+        width:93.5%;
+        height:300px;
+        overflow:hidden;
+        margin-bottom:20px;
+        margin-left: 38px;
+        background-color: #eaeaee;
+    }
+    .sampul img{
+        object-fit:cover;
+        width:100%;
+        height:100%;
+    }
+    /* post-foto */
+}

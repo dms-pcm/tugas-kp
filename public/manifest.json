@@ -1,0 +1,17 @@
+{
+    "name": "APLIKASI INFA INFO",
+    "short_name": "IN:IN",
+    "start_url": "/latihan-kp2/public",
+    "background_color": "#ffffff",
+    "description": "Aplikasi Sosial Media Semi Instagram",
+    "display": "fullscreen",
+    "theme_color": "#ffffff",
+    "icons": [
+        {
+            "src": "logo.PNG",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
