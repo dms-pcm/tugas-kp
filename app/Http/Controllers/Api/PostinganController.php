@@ -73,10 +73,20 @@ class PostinganController extends Controller
             $userId = Auth::id();
             $data_postingan = Postingan::where('created_by',$userId)->first();
 
+            $input = $request->caption;
+            $pecah = explode("<br>", $input);
+            $text = "";
+            for ($i=0; $i<=count($pecah)-1; $i++)
+            {
+                $part = str_replace($pecah[$i], $pecah[$i], $pecah[$i]);
+                $text = $part;
+            }
+
             $data_postingan = Postingan::create([
                 'attachment' => $attachment,
-                'caption' => $request->caption
+                'caption' => $text
             ]);
+            // dd($text);
             
             $this->responseCode = 200;
             $this->responseMessage = 'Postingan berhasil disimpan.';

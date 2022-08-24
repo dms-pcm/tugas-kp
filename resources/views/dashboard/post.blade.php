@@ -151,6 +151,16 @@
                         let data = response?.data?.data_postingan;
                         let name = response?.data?.nama_user?.name;
                         $.each(data,function (index,elements) {
+                            let ConvertStringToHTML = function (str) {
+                                let parser = new DOMParser();
+                                let doc = parser.parseFromString(str, 'text/html');
+                                return doc.body;
+                            };
+                            let aasasa = elements?.caption;
+                            let gelo = ConvertStringToHTML(aasasa);
+                            let cobaae = gelo.innerHTML;
+                            let erer = cobaae.split('\n');
+
                             let tanggal = elements?.created_at;
                             let a = tanggal.split(':');
                             let b = a[0].split('T');
@@ -178,6 +188,13 @@
                                 </div>
                                 `;
                             }else{
+                                let htmlan = '';
+                                for (let index = 0; index < erer.length; index++) {
+                                    const element = erer[index] + '<br>';
+                                    htmlan+=`
+                                        ${element}
+                                    `;
+                                }
                                 htmlPost+=`
                                 <div id="postingan-${elements?.id}" class="garis">
                                     <img src="${baseUrl}/storage/${elements?.attachment}" style="padding-top:20px;max-width:100%;height:auto;" alt="...">
@@ -192,7 +209,7 @@
                                             </div>
                                         </div>
                                         <div class="caption mt-4">
-                                            <p style="word-break: break-all;"><span class="text-uppercase fw-bolder me-2">${name}</span> ${elements?.caption} </p>
+                                            <p style="word-break: break-all;"><span class="text-uppercase fw-bolder me-2">${name}</span>`+htmlan+`</p>
                                         </div>
                                     </div>
                                 </div>
