@@ -344,7 +344,7 @@
                         <div class="modal-footer flex-center">
                             <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">Batal</button>
                             <button type="button" id="btn-postingan" class="btn btn-primary" onclick="simpan_postingan()">
-                                <span class="indicator-label">Simpan</span>
+                                <span class="indicator-label">Upload</span>
                                 <span class="indicator-progress">Please wait...
                                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                             </button>
