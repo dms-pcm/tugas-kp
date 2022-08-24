@@ -231,8 +231,8 @@ function downloadSVGAsPNG(e){
     const canvas = document.createElement("canvas");
     const svg = document.querySelector('#Qrcode svg');
     const base64doc = btoa(unescape(encodeURIComponent(svg.outerHTML)));
-    const w = parseInt(svg.getAttribute('width'));
-    const h = parseInt(svg.getAttribute('height'));
+    const w = 500;
+    const h = 500;
     const img_to_download = document.createElement('img');
     img_to_download.src = 'data:image/svg+xml;base64,' + base64doc;
     // console.log(w, h);
@@ -262,8 +262,8 @@ function downloadSVGAsPNG2(e){
     const canvas = document.createElement("canvas");
     const svg = document.querySelector('#qrcode #disini svg');
     const base64doc = btoa(unescape(encodeURIComponent(svg.outerHTML)));
-    const w = parseInt(svg.getAttribute('width'));
-    const h = parseInt(svg.getAttribute('height'));
+    const w = 500;
+    const h = 500;
     const img_to_download = document.createElement('img');
     img_to_download.src = 'data:image/svg+xml;base64,' + base64doc;
     // console.log(w, h);

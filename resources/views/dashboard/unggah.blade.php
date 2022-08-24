@@ -9,6 +9,16 @@
 		<link href="{{asset('assets/plugins/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
         <style>
+            .form-floating:before {
+                content: '';
+                position: absolute;
+                top: 1px;
+                left: 1px;
+                width: calc(100% - 2px);
+                height: 22px;
+                border-radius: 4px;
+                background-color: #f1faff;
+            }
             @media screen and (min-width: 320px) and (max-width: 428px) {
                 #title-none{
                     display:none !important;
@@ -121,7 +131,7 @@
                                 <div class="col-md-6 top-input">
                                     <label class="fs-6 fw-bold mb-2">Input Text</label>
                                     <div class="form-floating">
-                                        <textarea class="form-control bg-light-primary" style="height:80px" placeholder="Masukan caption..." id="caption"></textarea>
+                                        <textarea maxlength="999" class="form-control bg-light-primary" style="height:80px" placeholder="Masukan caption..." id="caption"></textarea>
                                         <label for="floatingTextarea" id="name-user"></label>
                                     </div>
                                 </div>

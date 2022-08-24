@@ -9,6 +9,7 @@
 		<link href="{{asset('assets/plugins/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/css/dark-mode.css')}}" rel="stylesheet" type="text/css" />
         <script type="text/javascript">
             var baseUrl = "{{url('/')}}/";
             var urlApi = "{{url('/api')}}/";
@@ -38,7 +39,7 @@
                     </div>
                 </div>
                 <!-- NAVBAR BOTTOM -->
-                <nav class="navbar fixed-bottom app-bar" style="background-color:#d7ecff;" id="barshow">
+                <nav class="navbar fixed-bottom app-bar" id="barshow">
                     <div class="container-fluid">
                         <div class="col-4">
                             <div class="text-center">
@@ -59,7 +60,7 @@
                         <div class="col-4">
                             <div class="text-center">
                                 <div class="form-switch d-flex justify-content-center mt-2 mb-1">
-                                    <input class="form-check-input w-46px h-20px" type="checkbox" id="night" checked="checked" />
+                                    <input class="form-check-input w-46px h-20px" type="checkbox" id="darkSwitch" />
                                 </div>
                                 <span class="text-muted" style="font-size:12px;">Night Mode</span>
                             </div>
@@ -67,13 +68,13 @@
                     </div>
                 </nav>
                 <!-- NAVBAR BOTTOM SCAN -->
-                <nav class="navbar fixed-bottom navbar-light bg-light app-bar" style="background-color:#d7ecff;" id="bar">
+                <nav class="navbar fixed-bottom navbar-light app-bar" id="bar">
                     <div class="container-fluid">
                         <div class="col-4"></div>
                         <div class="col-4">
                             <div class="text-center">
                                 <div class="form-switch d-flex justify-content-center mt-2 mb-1">
-                                    <input class="form-check-input w-46px h-20px" type="checkbox" id="night" checked="checked" />
+                                    <input class="form-check-input w-46px h-20px" type="checkbox" id="darkSwitch" />
                                 </div>
                                 <span class="text-muted" style="font-size:12px;">Night Mode</span>
                             </div>
@@ -113,7 +114,7 @@
                                                     <i class="fas fa-ellipsis-v text-light fs-2"></i>
                                                     <div class="dropdown-isi">
                                                         <div data-bs-toggle="modal" data-bs-target="#edit_staff" class="d-flex align-items-center text-muted fw-bold">
-                                                            <span class="svg-icon svg-icon-muted svg-icon-2 me-3">
+                                                            <span class="svg-icon svg-icon-warning svg-icon-2 me-3" id="color-svg1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                                     <path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="black"/>
                                                                     <path d="M5.574 21.3L3.692 21.928C3.46591 22.0032 3.22334 22.0141 2.99144 21.9594C2.75954 21.9046 2.54744 21.7864 2.3789 21.6179C2.21036 21.4495 2.09202 21.2375 2.03711 21.0056C1.9822 20.7737 1.99289 20.5312 2.06799 20.3051L2.696 18.422L5.574 21.3ZM4.13499 14.105L9.891 19.861L19.245 10.507L13.489 4.75098L4.13499 14.105Z" fill="black"/>
@@ -123,7 +124,7 @@
                                                         </div>
                                                         <div class="separator my-2"></div>
                                                         <div onclick="logout()" class="d-flex align-items-center text-muted fw-bold">
-                                                            <span class="svg-icon svg-icon-muted svg-icon-2 me-3">
+                                                            <span class="svg-icon svg-icon-danger svg-icon-2 me-3" id="color-svg2">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                                     <rect opacity="0.3" x="4" y="11" width="12" height="2" rx="1" fill="black"/>
                                                                     <path d="M5.86875 11.6927L7.62435 10.2297C8.09457 9.83785 8.12683 9.12683 7.69401 8.69401C7.3043 8.3043 6.67836 8.28591 6.26643 8.65206L3.34084 11.2526C2.89332 11.6504 2.89332 12.3496 3.34084 12.7474L6.26643 15.3479C6.67836 15.7141 7.3043 15.6957 7.69401 15.306C8.12683 14.8732 8.09458 14.1621 7.62435 13.7703L5.86875 12.3073C5.67684 12.1474 5.67684 11.8526 5.86875 11.6927Z" fill="black"/>
@@ -174,7 +175,7 @@
                                 
                                 <div>
                                     <div class="container-fluid main-box">
-                                        <ul class="row nav nav-tabs nav-line-tabs mb-5 fs-6 ms-5">
+                                        <ul class="row nav nav-tabs nav-line-tabs mb-5 fs-6 ms-5 me-5">
                                             <li class="nav-item col-6">
                                                 <a class="nav-link active text-center" data-bs-toggle="tab" href="#kt_tab_pane_1"><i class="fas fa-images fs-2"></i></a>
                                             </li>
@@ -192,7 +193,7 @@
                                                                 <div class="body-post flex-wrap" id="postingan"></div>
                                                             </div>
                                                             <div class="tab-pane fade show" id="kt_tab_pane_2">
-                                                                <p class="p-2" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptates eius sint voluptatem totam expedita, minima dolore. Accusamus dolorem magnam, cum reiciendis officiis voluptate doloribus tempora corporis ullam porro perferendis?</p>
+                                                                <p class="ps-5 pe-5" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptates eius sint voluptatem totam expedita, minima dolore. Accusamus dolorem magnam, cum reiciendis officiis voluptate doloribus tempora corporis ullam porro perferendis?</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -237,7 +238,7 @@
                                                 <div class="mt-1">
                                                     <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('{{asset('assets/img/blank.png')}}');">
                                                         <div class="image-input-wrapper w-125px h-125px" style="background-image: url('{{asset('assets/img/blank.png')}}');" id="ada_data"></div>
-                                                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change">
+                                                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" id="circle" data-kt-image-input-action="change">
                                                             <i class="bi bi-pencil-fill fs-7"></i>
                                                             <input type="file" name="file" accept=".png, .jpg, .jpeg"/>
                                                         </label>
@@ -257,7 +258,7 @@
                                                 <div class="mt-1">
                                                     <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('{{asset('assets/img/no-image.jpg')}}');">
                                                         <div class="image-input-wrapper w-125px h-125px" style="background-image: url('{{asset('assets/img/no-image.jpg')}}');" id="sampul_data"></div>
-                                                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change">
+                                                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" id="circle" data-kt-image-input-action="change">
                                                             <i class="bi bi-pencil-fill fs-7"></i>
                                                             <input type="file" name="file" accept=".png, .jpg, .jpeg"/>
                                                         </label>
@@ -279,13 +280,13 @@
                                     </div>
                                     <div class="fv-row mb-7">
                                         <label class="fs-6 fw-bold mb-2">Bio</label>
-                                        <textarea maxlength="60" class="form-control form-control form-control-solid" data-kt-autosize="true" id="bio"></textarea>
+                                        <textarea maxlength="80" class="form-control form-control form-control-solid" data-kt-autosize="true" id="bio"></textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer flex-center">
-                            <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-light me-3" id="batal" data-bs-dismiss="modal">Batal</button>
                             <button type="button" class="btn btn-primary" id="btn-simpan" onclick="simpan()">
                                 <span class="indicator-label">Simpan</span>
                                 <span class="indicator-progress">Please wait...
@@ -335,8 +336,8 @@
                                     </div>
                                 </div>
                                 <div class="form-floating col-md-9" style="margin-top:2.25rem">
-                                    <textarea class="form-control" style="height:130px" placeholder="Masukan caption..." id="caption"></textarea>
-                                    <label for="floatingTextarea" class="ms-2 fw-bolder" id="name-user"></label>
+                                    <textarea maxlength="999" class="form-control" style="height:130px" placeholder="Masukan caption..." id="caption"></textarea>
+                                    <label style="width:100%" for="floatingTextarea" class="ms-2 fw-bolder" id="name-user"></label>
                                 </div>
                             </div>
                         </div>
@@ -354,24 +355,16 @@
         </div>
         <!-- MODAL QRCODE -->
         <div class="modal fade" id="qrcode" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered mw-650px">
+            <div class="modal-dialog modal-dialog-centered mw-650px" style="margin-left:0.4rem !important;">
                 <div class="modal-content">
-                    <div class="modal-header" id="kt_modal_update_user_header">
-                        <h2 class="fw-bolder">Scan me</h2>
-                        <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
-                            <span class="svg-icon svg-icon-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
-                                    <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
-                                </svg>
-                            </span>
-                        </div>
+                    <div class="modal-header justify-content-center" style="border-bottom: none;">
+                        <h2 class="fw-bolder text-uppercase">Scan me</h2>
                     </div>
                     <div class="modal-body p-0">
                         <div class="d-flex align-items-center justify-content-center" id="disini">
                             {!! QrCode::size(200)->generate(Request::url()); !!}
                         </div>
-                        <div class="d-flex align-items-center justify-content-center mt-3 mb-2">
+                        <div class="d-flex align-items-center justify-content-center mb-3" style="margin-top:1.75rem">
                             <button class="btn btn-primary btn-sm" id="downloadPNG2">Download Barcode</button>
                         </div>
                     </div>
@@ -380,6 +373,7 @@
         </div>
 		<script>var hostUrl = "assets/";</script>
         <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+        <script src="{{asset('assets/js/dark-mode-switch.min.js')}}"></script>
 		<script src="{{asset('assets/plugins/plugins.bundle.js')}}"></script>
 		<script src="{{asset('assets/js/scripts.bundle.js')}}"></script>
 		<script src="{{asset('assets/plugins/fslightbox.bundle.js')}}"></script>

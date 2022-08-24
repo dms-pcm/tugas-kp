@@ -26,8 +26,8 @@
                 opacity: 0;
             }
             .last:last-child{
-                    margin-bottom: 70px !important;
-                }
+                margin-bottom: 70px !important;
+            }
             @media screen and (min-width: 320px) and (max-width: 428px) {
                 #title-none{
                     display:none !important;
@@ -157,29 +157,51 @@
                             var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
                             var today  = new Date(b[0]);
                             let format = today.toLocaleDateString("en-US", options);
-                            htmlPost+=`
-                            <div id="postingan-${elements?.id}" class="garis">
-                                <img src="${baseUrl}/storage/${elements?.attachment}" style="padding-top:20px;max-width:100%;height:auto;" alt="...">
-                                <div class="card-body" style="padding:7px !important; padding-top:0px !important; margin-top:4px;">
-                                    <div class="row" id="work">
-                                        <div class="col-7">
-                                            <span> Work at</span>
-                                            <span class="text-uppercase fw-bolder" style="color:#6610f2;">Burningroom Technology</span>
+                            if (elements?.caption == null) {
+                                htmlPost+=`
+                                <div id="postingan-${elements?.id}" class="garis">
+                                    <img src="${baseUrl}/storage/${elements?.attachment}" style="padding-top:20px;max-width:100%;height:auto;" alt="...">
+                                    <div class="card-body" style="padding:7px !important; padding-top:0px !important; margin-top:4px;">
+                                        <div class="row" id="work">
+                                            <div class="col-7">
+                                                <span> Work at</span>
+                                                <span class="text-uppercase fw-bolder" style="color:#6610f2;">Burningroom Technology</span>
+                                            </div>
+                                            <div class="col-5">
+                                                <span class="float-end"> ${format}</span>
+                                            </div>
                                         </div>
-                                        <div class="col-5">
-                                            <span class="float-end"> ${format}</span>
+                                        <div class="caption mt-4">
+                                            <p style="word-break: break-all;"><span class="text-uppercase fw-bolder me-2">${name}</span> </p>
                                         </div>
-                                    </div>
-                                    <div class="caption mt-4">
-                                        <p style="text-align: justify;"><span class="text-uppercase fw-bolder me-2">${name}</span>${elements?.caption}</p>
                                     </div>
                                 </div>
-                            </div>
-                            `;
+                                `;
+                            }else{
+                                htmlPost+=`
+                                <div id="postingan-${elements?.id}" class="garis">
+                                    <img src="${baseUrl}/storage/${elements?.attachment}" style="padding-top:20px;max-width:100%;height:auto;" alt="...">
+                                    <div class="card-body" style="padding:7px !important; padding-top:0px !important; margin-top:4px;">
+                                        <div class="row" id="work">
+                                            <div class="col-7">
+                                                <span> Work at</span>
+                                                <span class="text-uppercase fw-bolder" style="color:#6610f2;">Burningroom Technology</span>
+                                            </div>
+                                            <div class="col-5">
+                                                <span class="float-end"> ${format}</span>
+                                            </div>
+                                        </div>
+                                        <div class="caption mt-4">
+                                            <p style="word-break: break-all;"><span class="text-uppercase fw-bolder me-2">${name}</span> ${elements?.caption} </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                `;
+                            }
                         })
                         $('#card-web').html(htmlPost);
                         window.location.href=window.location.href;
-                        setTimeout(function(){window.location.href=window.location.href} , 500);
+                        setTimeout(function(){window.location.href=window.location.href} , 1000);
                     },
                     error:function(xhr){
                         if (!localStorage.getItem("token")) {

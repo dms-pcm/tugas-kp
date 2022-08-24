@@ -1,0 +1,92 @@
+/*!
+ * Dark Mode Switch v1.0.1 (https://github.com/coliff/dark-mode-switch)
+ * Copyright 2021 C.Oliff
+ * Licensed under MIT (https://github.com/coliff/dark-mode-switch/blob/main/LICENSE)
+ */
+
+[data-theme="dark"] {
+  background-color: #111 !important;
+  color: #eee;
+}
+
+[data-theme="dark"] .bg-black {
+  background-color: #fff !important;
+}
+
+[data-theme="dark"] .bg-dark {
+  background-color: #eee !important;
+}
+
+[data-theme="dark"] .bg-light {
+  background-color: #222 !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: #000 !important;
+}
+
+[data-theme="dark"] .symbol.symbol-circle {
+  border: 3px solid #111 !important;
+}
+
+[data-theme="dark"] .dropdown-isi {
+  background-color: #000 !important;
+}
+
+[data-theme="dark"] .separator {
+  border-bottom: 1px solid #222;
+}
+
+[data-theme="dark"] .app-bar {
+  background-color: #222 !important;
+}
+
+[data-theme="dark"] .text-dark {
+  color: #d2d0d0 !important;
+}
+
+[data-theme="dark"] .modal-content {
+  background-color: #0b0b0b !important;
+}
+
+[data-theme="dark"] .form-control.form-control-solid {
+  background-color: #222 !important;
+  border-color: #222;
+  color: #d2d0d0;
+}
+
+[data-theme="dark"] #edit_staff .svg-icon svg [fill]:not(.permanent):not(g) {
+  fill: #fff;
+}
+
+[data-theme="dark"] #color-svg1 {
+  fill: #ffc700;
+}
+
+[data-theme="dark"] #color-svg2 {
+  fill: #f1416c;
+}
+
+[data-theme="dark"] .modal-header {
+  border-bottom: none;
+}
+
+[data-theme="dark"] .modal-footer {
+  border-top: 1px solid #222;
+}
+
+[data-theme="dark"] .image-input.image-input-outline .image-input-wrapper {
+  border: 3px solid #222;
+}
+
+[data-theme="dark"] #circle {
+  background-color: #222 !important;
+}
+
+[data-theme="dark"] #batal {
+  background-color: #222 !important;
+}
+
+[data-theme="dark"] .nav-line-tabs, .nav-tabs {
+  border-bottom: none;
+}
