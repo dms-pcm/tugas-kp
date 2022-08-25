@@ -25,9 +25,7 @@
                 transition: opacity 0.5s;
                 opacity: 0;
             }
-            .last:last-child{
-                margin-bottom: 70px !important;
-            }
+            
             @media screen and (min-width: 320px) and (max-width: 428px) {
                 #title-none{
                     display:none !important;
@@ -36,10 +34,7 @@
                     background-color:#ffffff;
                 }
                 #work{
-                    font-size: 10px !important;
-                }
-                .last:last-child{
-                    margin-bottom: 70px !important;
+                    font-size: 8.6px !important;
                 }
                 #kt_toolbar_container{
                     display:none !important;
@@ -62,9 +57,6 @@
                 }
                 #work{
                     font-size: 10px !important;
-                }
-                .last:last-child{
-                    margin-bottom: 70px !important;
                 }
                 #kt_toolbar_container{
                     display:none !important;

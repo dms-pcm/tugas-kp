@@ -26,7 +26,7 @@
                             <span class="h-20px border-gray-300 border-start mx-4"></span>
                             <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
                                 <li class="breadcrumb-item text-muted">
-                                    <a href="{{url('/dashboard')}}" class="text-muted text-hover-primary">Home</a>
+                                    <a href="{{url('#')}}" class="text-muted text-hover-primary">Home</a>
                                 </li>
                             </ul>
                         </div>

@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!-- PWA  -->
 		<meta name="theme-color" content="#6777ef"/>
-		<link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
+		<link rel="apple-touch-icon" href="{{ asset('logo.png') }}">
 		<link rel="manifest" href="{{ asset('/manifest.json') }}">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<link href="{{asset('assets/plugins/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
