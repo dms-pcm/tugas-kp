@@ -131,7 +131,7 @@
                                 <div class="col-md-6 top-input">
                                     <label class="fs-6 fw-bold mb-2">Input Text</label>
                                     <div class="form-floating">
-                                        <textarea maxlength="999" class="form-control bg-light-primary" style="height:80px" placeholder="Masukan caption..." id="caption"></textarea>
+                                        <textarea maxlength="999" class="form-control bg-light-primary fw-light" style="height:80px" placeholder="Masukan caption..." id="caption"></textarea>
                                         <label for="floatingTextarea" id="name-user"></label>
                                     </div>
                                 </div>

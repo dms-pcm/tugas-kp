@@ -1,5 +1,6 @@
 let file = '';
 let file_sampul = '';
+let postingan = '';
 jQuery(document).ready(function () {
     loadStop();
     $('#back_2').on('click',function(){
@@ -18,19 +19,41 @@ jQuery(document).ready(function () {
     downloadPNG.addEventListener('click', downloadSVGAsPNG);
     const downloadPNG2 = document.querySelector('#downloadPNG2');
     downloadPNG2.addEventListener('click', downloadSVGAsPNG2);
+
+    $("#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #profile #del_profile").on('click',function () {
+        hapusProfile();
+    });
+    $("#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #sampul #del_sampul").on('click',function () {
+        hapusSampul();
+        // $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #sampul .image-input.image-input-empty [data-kt-image-input-action="remove"]').removeClass('d-none');
+    });
 });
 
-function loadStart(){
+function loadStart1(){
     //start
     $('#btn-simpan .indicator-label').css('display','none')
     $('#btn-simpan .indicator-progress').css('display','block')
 }
 
-function loadStop(){
+function loadStop1(){
     //finished
     $('#btn-simpan .indicator-label').css('display','block')
     $('#btn-simpan .indicator-progress').css('display','none')
 }
+
+function loadStart(){
+    //start
+    $('#btn-postingan .indicator-label').css('display','none')
+    $('#btn-postingan .indicator-progress').css('display','block')
+}
+
+function loadStop(){
+    //finished
+    $('#btn-postingan .indicator-label').css('display','block')
+    $('#btn-postingan .indicator-progress').css('display','none')
+}
+
+// const modalShow = (postingan_id) => 
 
 function me(id) {
     $.ajax({
@@ -45,6 +68,8 @@ function me(id) {
             let htmlName = '';
             let htmlCreatedBy = ``;
             let res_name = response?.data?.user?.name;
+            let id_user = response?.data?.user?.id;
+            $('#edit_staff #id_user').val(id_user);
             html+=`<span id="color-name">${res_name}</span>`;
             $('#nama_karyawan').html(html);
             htmlName+=`<span>${res_name}</span>`;
@@ -66,11 +91,11 @@ function me(id) {
             let htmlBio = ``;
             if (res?.attachment == null) {
                 htmlProfil+=`
-                <img src="${baseUrl}/assets/img/blank.png" alt="image" />
+                <img src="${baseUrl}/assets/img/blank.png" alt="image" loading="lazy"/>
                 `;
             }else{
                 htmlProfil+=`
-                <img src="${baseUrl}storage/${res?.attachment}" style="object-fit: cover !important;" alt="image" />
+                <img src="${baseUrl}storage/${res?.attachment}" style="object-fit: cover !important;" alt="image" loading="lazy"/>
                 `;
             }
             $('#foto_profil').html(htmlProfil);
@@ -80,10 +105,10 @@ function me(id) {
                 htmlSampulWeb+=``;
             }else{
                 htmlSampul+=`
-                <img id="pp" src="${baseUrl}storage/${res?.attachment_sampul}" alt="image" />
+                <img id="pp" src="${baseUrl}storage/${res?.attachment_sampul}" alt="image" loading="lazy"/>
                 `;
                 htmlSampulWeb+=`
-                <img src="${baseUrl}storage/${res?.attachment_sampul}" alt="image" />
+                <img src="${baseUrl}storage/${res?.attachment_sampul}" alt="image" loading="lazy"/>
                 `;
             }
             $('#img').html(htmlSampul);
@@ -108,11 +133,13 @@ function me(id) {
             if (!!res?.jenis_jabatan) {
                 if (res?.attachment == null) {
                     $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #ada_data').css('background-image','url('+baseUrl+'assets/img/blank.png');
+                    $("#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #profile #del_profile").addClass('d-none');
                 }else{
                     $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #ada_data').css('background-image','url('+baseUrl+'storage/' + res?.attachment + ')');
                 }
                 if (res?.attachment_sampul == null) {
                     $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #sampul_data').css('background-image','url('+baseUrl+'assets/img/no-image.jpg');
+                    $("#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #sampul #del_sampul").addClass('d-none');
                 }else{
                     $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #sampul_data').css('background-image','url('+baseUrl+'storage/' + res?.attachment_sampul + ')');
                 }
@@ -128,7 +155,7 @@ function me(id) {
                 htmlPostingan+=`
                 <div class="post-foto">
                     <a href="${baseUrl}post/${id}#postingan-${idpost}">
-                        <img src="${baseUrl}storage/${element?.attachment}" alt="image" class="img-fluid"/>
+                        <img src="${baseUrl}storage/${element?.attachment}" alt="image" class="img-fluid" loading="lazy"/>
                     </a>
                 </div>
                 `;
@@ -159,6 +186,10 @@ function simpan() {
     let k = `${baseUrl}assets/img/no-image.jpg`;
     
     if (w[1] == cek && j[1] == k) {//sampul&profile(kosong)
+        formData.append('name', $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #nama').val());
+        formData.append('jenis_jabatan', $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #jenis_jabatan').val());
+        formData.append('bio', $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #bio').val());
+    }else if((w[1] == cek && j[1] == z) || (j[1] == k && w[1] == a)){
         formData.append('name', $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #nama').val());
         formData.append('jenis_jabatan', $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #jenis_jabatan').val());
         formData.append('bio', $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #bio').val());
@@ -194,7 +225,7 @@ function simpan() {
         formData.append('bio', $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #bio').val());
     }
 
-    loadStart()
+    loadStart1()
     $.ajax({
         url:`${urlApi}karyawan`,
         type:'POST',
@@ -206,7 +237,7 @@ function simpan() {
             Authorization: "Bearer " + localStorage.getItem("token"),
         },
         success:function(response){
-            loadStop();
+            loadStop1();
             Swal.fire({
                 title: "Berhasil!",
                 text: response.status.message,
@@ -217,7 +248,7 @@ function simpan() {
             });
         },
         error:function(xhr){
-            loadStop();
+            loadStop1();
             handleErrorSimpan(xhr);
         }
     });
@@ -289,6 +320,11 @@ function downloadSVGAsPNG2(e){
     }  
 }
 
+function upload_post() {
+    $("#add_post").modal('show');
+    clearForm();
+}
+
 function simpan_postingan() {
     var formData = new FormData();
     formData.append('attachment', $('#add_post #gambar input[type="file"]')[0].files[0]);
@@ -319,6 +355,218 @@ function simpan_postingan() {
         error:function(xhr){
             loadStop();
             handleErrorSimpan(xhr);
+        }
+    });
+}
+
+function hapus(id) {
+    console.log('hapus');
+    Swal.fire({
+        title: "Yakin ingin hapus postingan?",
+        icon: "warning",
+        showCancelButton: true,
+        allowOutsideClick: false,
+        confirmButtonText: "Ya, Hapus",
+        cancelButtonText: "Batal",
+        customClass: {
+            confirmButton: 'btn btn-danger',
+            cancelButton: 'btn btn-secondary'
+        },
+    }).then((result) => {
+        if (result.value) {
+            $.ajax({
+                url:`${urlApi}postingan/delete/${id}`,
+                type:'DELETE',
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+                success:function(response){
+                    Swal.fire({
+                        title: "Berhasil!",
+                        text: response.status.message,
+                        icon: "success",
+                    }).then((result) => {
+                        window.location.reload();
+                    });
+                },
+                error:function(xhr){
+                    handleErrorSimpan(xhr);
+                }
+            });    
+        }
+    });
+}
+
+function clearForm() {
+    $('#add_post #caption').val('');
+    $('#update #id_postingan').val('');
+}
+
+function showModal(id_postingan) {
+    clearForm();
+    $('#update').modal('show');
+    $('#update #id_postingan').val(id_postingan);
+    $('#btn-update').on('click',function () {
+        editPost(id_postingan);
+    });
+    $.ajax({
+        url:`${urlApi}postingan/show/${id_postingan}`,
+        type:'GET',
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        success:function(response){
+            let res = response?.data?.data_postingan;
+            postingan = res?.attachment;
+            $('#update #gambar #postingan_gambar').css('background-image','url('+baseUrl+'storage/' + res?.attachment + ')');
+            $('#update #caption').val(res?.caption);
+        },
+        error:function(xhr){
+            if (xhr?.status == 400) {
+                handleErrorDetails(xhr);
+            }
+        }
+    });
+}
+
+function editPost(id) {
+    clearForm();
+    // var formData = new FormData(document.getElementById('update_post'));
+    var formData = new FormData();
+    let pict = `${baseUrl}storage/${postingan}`;
+    let any = $('#update #gambar #postingan_gambar').css('background-image');
+    let cek = any.split('(');
+    let hasil = cek[1].split('\"');
+    if (hasil[1] == pict) {//gambar post tidak ganti
+        formData.append('caption', $('#update #caption').val());    
+    } else {
+        formData.append('attachment', $('#update #gambar input[type="file"]')[0].files[0]);
+        formData.append('caption', $('#update #caption').val());
+    }
+
+    $.ajax({
+        url:`${urlApi}postingan/update/${id}`,
+        type:'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        success:function(response){
+            Swal.fire({
+                title: "Berhasil!",
+                text: response.status.message,
+                icon: "success",
+            }).then((result) => {
+                window.location.reload();
+            });
+        },
+        error:function(xhr){
+            handleErrorSimpan(xhr);
+        }
+    });
+}
+
+function hapusProfile() {
+    Swal.fire({
+        title: "Yakin ingin hapus foto profile?",
+        icon: "warning",
+        showDenyButton: true,
+        allowOutsideClick: false,
+        confirmButtonText: "Ya, Hapus",
+        denyButtonText: 'Batal',
+        customClass: {
+            confirmButton: 'btn btn-danger',
+            denyButton: 'btn btn-secondary'
+        },
+    }).then((result) => {
+        $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #ada_data').css('background-image','url('+baseUrl+'assets/img/blank.png');
+        if (result.isConfirmed) {
+            let id = $('#edit_staff #id_user').val();
+            var formData = new FormData(document.getElementById('data_karyawan'));
+            formData.append('attachment', 'null');
+            // formData.append('attachment_sampul', 'null');
+            $.ajax({
+                url:`${urlApi}karyawan/delete/${id}`,
+                type:'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+                success:function(response){
+                    // console.log(response);
+                    Swal.fire({
+                        title: "Berhasil!",
+                        text: "Foto profile telah dihapus.",
+                        icon: "success",
+                    }).then((result) => {
+                        window.location.reload();
+                    });
+                    $("#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #profile #del_profile").addClass('d-none');
+                },
+                error:function(xhr){
+                    handleErrorSimpan(xhr);
+                }
+            });
+        }else if (result.isDenied){
+            $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #ada_data').css('background-image','url('+baseUrl+'storage/' + file + ')');
+        }
+    });
+}
+
+function hapusSampul() {
+    Swal.fire({
+        title: "Yakin ingin hapus foto sampul?",
+        icon: "warning",
+        showDenyButton: true,
+        allowOutsideClick: false,
+        confirmButtonText: "Ya, Hapus",
+        denyButtonText: 'Batal',
+        customClass: {
+            confirmButton: 'btn btn-danger',
+            denyButton: 'btn btn-secondary'
+        },
+    }).then((result) => {
+        $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #sampul_data').css('background-image','url('+baseUrl+'assets/img/no-image.jpg');
+        if (result.isConfirmed) {
+            let id = $('#edit_staff #id_user').val();
+            var formData = new FormData(document.getElementById('data_karyawan'));
+            // formData.append('attachment', 'null');
+            formData.append('attachment_sampul', 'null');
+            $.ajax({
+                url:`${urlApi}karyawan/delete/${id}`,
+                type:'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+                success:function(response){
+                    // console.log(response);
+                    Swal.fire({
+                        title: "Berhasil!",
+                        text: "Foto sampul telah dihapus.",
+                        icon: "success",
+                    }).then((result) => {
+                        window.location.reload();
+                    });
+                    $("#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #sampul #del_sampul").addClass('d-none');
+                },
+                error:function(xhr){
+                    handleErrorSimpan(xhr);
+                }
+            });
+        }else if (result.isDenied){
+            $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #sampul_data').css('background-image','url('+baseUrl+'storage/' + file_sampul + ')');
         }
     });
 }

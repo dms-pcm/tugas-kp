@@ -9,13 +9,6 @@
 		<link href="{{asset('assets/plugins/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
         <style>
-            .garis{
-                overflow-x:hidden;
-                border-top:1px solid #ccc;
-            }
-            .garis:first-child{
-                border-top:0px;
-            }
             html{
                 scroll-behavior:smooth;
                 box-sizing:border-box;
@@ -25,7 +18,37 @@
                 transition: opacity 0.5s;
                 opacity: 0;
             }
-            
+            .dropdown-toggle::after{
+                border:0px !important;
+                content: none;
+            }
+            .garis{
+                overflow-x:hidden;
+                border-top:1px solid #ccc;
+                position: relative;
+                padding-top:30px;
+            }
+            .garis:first-child{
+                border-top:0px;
+                margin-top:10px
+            }
+            .dots{
+                width:100%;
+                height:100%;
+                position: absolute;
+                top: 0;
+            }
+            .asasa{
+                margin-top:2.5rem;
+            }
+            .dropdown-menu.show{
+                margin-right: 7px !important;
+            }
+            /* .btn{
+                padding:0px !important;
+                border-radius: 0px !important;
+                background-color: none !important;
+            } */
             @media screen and (min-width: 320px) and (max-width: 428px) {
                 #title-none{
                     display:none !important;
@@ -97,7 +120,7 @@
 	<body class="bg-gray" data-bs-spy="scroll" onload="document.body.style.opacity='1'">
 		<div class="d-flex flex-column flex-root">
             <div class="d-flex flex-column flex-column-fluid">
-                <div class="post d-flex flex-column-fluid fixed-top bg-light p-2" id="nav-color">
+                <div class="post d-flex flex-column-fluid fixed-top bg-light" style="padding:0.8rem;" id="nav-color">
                     <div id="kt_content_container" class="container-xxl">
                         <a id="back_2">
                             <div class="row">
@@ -118,6 +141,61 @@
                 </div>
             </div>
 		</div>
+        <!-- <div id="modal-generate">
+
+        </div> -->
+        <div class="modal fade" id="update" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered mw-650px">
+                <div class="modal-content">
+                    <input type="hidden" id="id_postingan">
+                    <form class="form" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-header">
+                            <h2 class="fw-bolder">Update Postingan</h2>
+                            <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+                                <span class="svg-icon svg-icon-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                                        <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="modal-body py-10 px-lg-17">
+                            <div class="row">
+                                <div class="col-md-3" id="gambar">
+                                    <label class="fs-6 fw-bold mb-2">
+                                        <span>Update Foto</span>
+                                        <i class="fas fa-exclamation-circle ms-1 fs-7" id="tooltip" data-bs-toggle="tooltip" title="Tipe file yang diizinkan: png, jpg, jpeg."></i>
+                                    </label>
+                                    <div class="mt-1">
+                                        <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('{{asset('assets/img/no-image.jpg')}}');">
+                                            <div class="image-input-wrapper w-125px h-125px" style="background-image: url('{{asset('assets/img/no-image.jpg')}}');" id="postingan_gambar"></div>
+                                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change">
+                                                <i class="bi bi-pencil-fill fs-7"></i>
+                                                <input type="file" name="file" accept=".png, .jpg, .jpeg" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-9" style="margin-top:2.25rem">
+                                    <textarea maxlength="999" class="form-control fw-light" style="height:130px" placeholder="Masukan caption..." id="caption"></textarea>
+                                    <label style="width:100%" for="floatingTextarea" class="ms-2 fw-bolder text-uppercase" id="user_name"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer flex-center">
+                            <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Batal</button>
+                            <button type="button" id="btn-update" class="btn btn-primary">
+                                <span class="indicator-label">Update</span>
+                                <span class="indicator-progress">Please wait...
+                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 		<script>var hostUrl = "assets/";</script>
         <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 		<script src="{{asset('assets/plugins/plugins.bundle.js')}}"></script>
@@ -140,9 +218,13 @@
                     },
                     success:function(response){
                         let htmlPost = ``;
+                        let htmlName = '';
                         let data = response?.data?.data_postingan;
                         let name = response?.data?.nama_user?.name;
+                        htmlName+=`<span>${name}</span>`;
+                        $('#user_name').html(htmlName);
                         $.each(data,function (index,elements) {
+                            let idPost = elements?.id;
                             let ConvertStringToHTML = function (str) {
                                 let parser = new DOMParser();
                                 let doc = parser.parseFromString(str, 'text/html');
@@ -162,7 +244,7 @@
                             if (elements?.caption == null) {
                                 htmlPost+=`
                                 <div id="postingan-${elements?.id}" class="garis">
-                                    <img src="${baseUrl}/storage/${elements?.attachment}" style="padding-top:20px;max-width:100%;height:auto;" alt="...">
+                                    <img src="${baseUrl}/storage/${elements?.attachment}" style="padding-top:20px;max-width:100%;height:auto;" alt="..." loading="lazy">
                                     <div class="card-body" style="padding:7px !important; padding-top:0px !important; margin-top:4px;">
                                         <div class="row" id="work">
                                             <div class="col-7">
@@ -189,7 +271,16 @@
                                 }
                                 htmlPost+=`
                                 <div id="postingan-${elements?.id}" class="garis">
-                                    <img src="${baseUrl}/storage/${elements?.attachment}" style="padding-top:20px;max-width:100%;height:auto;" alt="...">
+                                    <img src="${baseUrl}/storage/${elements?.attachment}" style="max-width:100%;height:auto;" alt="..." loading="lazy">
+                                    <div class="dropdown dots">
+                                        <button class="btn dropdown-toggle float-end asasa" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fs-2 text-danger"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" onclick="showModal(${idPost})"><i class="fas fa-pencil-alt me-2 text-warning"></i> Edit</a></li>
+                                            <li><a class="dropdown-item" onclick="hapus(${idPost})"><i class="fas fa-trash me-2 text-danger"></i> Delete</a></li>
+                                        </ul>
+                                    </div>
                                     <div class="card-body" style="padding:7px !important; padding-top:0px !important; margin-top:4px;">
                                         <div class="row" id="work">
                                             <div class="col-7">

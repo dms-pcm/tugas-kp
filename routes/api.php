@@ -28,11 +28,14 @@ Route::group(['middleware' => 'jwt.verify'], function () {
     Route::group(['prefix' => 'karyawan'], function () {
         Route::post('/',  [KaryawanController::class, 'store']);
         Route::get('/view',  [KaryawanController::class, 'show']);
+        Route::post('/delete/{id}',  [KaryawanController::class, 'destroy']);
     });
 
     Route::group(['prefix' => 'postingan'], function () {
         Route::post('/',  [PostinganController::class, 'store']);
         Route::get('/show',  [PostinganController::class, 'show']);
         Route::get('/show/{id}',  [PostinganController::class, 'show_id']);
+        Route::post('/update/{id}',  [PostinganController::class, 'update']);
+        Route::delete('/delete/{id}',  [PostinganController::class, 'destroy']);
     });
 });

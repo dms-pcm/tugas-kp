@@ -132,6 +132,14 @@ class KaryawanController extends Controller
                     'jenis_jabatan' => $request->jenis_jabatan,
                     'bio' => $request->bio
                 ]);
+
+                if (empty($request->name)) {
+            
+                }else {
+                    $updateNama = $userAuth->update([
+                        'name' => $request->name
+                    ]);
+                }
             }
             
             $this->responseCode = 200;
@@ -153,6 +161,42 @@ class KaryawanController extends Controller
 
             return response()->json($this->getResponse(), $this->responseCode);
         }
+    }
+
+    public function destroy(Request $request,$id)
+    {
+        $delete_gambar = Karyawan::where('created_by',$id)->first();
+        $temp = $delete_gambar->attachment;
+        $temp_sampul = $delete_gambar->attachment_sampul;
+        $data = [];
+
+        if ($request->attachment == null) {
+            $data['attachment_sampul'] = null;
+            $this->storage->delete($temp_sampul);
+        }else if ($request->attachment_sampul == null) {
+            $data['attachment'] = null;
+            $this->storage->delete($temp);
+        }else{
+            $data['attachment'] = null;
+            $data['attachment_sampul'] = null;
+            $this->storage->delete($temp);
+            $this->storage->delete($temp_sampul);
+        }
+
+        $update = $delete_gambar->update($data);
+        // dd($delete_gambar);
+        // if (empty($delete_gambar)) {
+        //     $this->responseCode = 404;
+        //     $this->responseMessage = 'Data karyawan tidak ditemukan.';
+
+        //     return response()->json($this->getResponse(), $this->responseCode);
+        // }
+
+        $this->responseCode = 200;
+        $this->responseMessage = 'Foto telah dihapus.';
+        $this->responseData['data_karyawan'] = $delete_gambar;
+
+        return response()->json($this->getResponse(), $this->responseCode);
     }
 
     public function show()

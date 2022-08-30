@@ -1,5 +1,6 @@
 jQuery(document).ready(function ($) {
     loadStop();
+    localStorage.removeItem("darkSwitch2");
 });
 
 function loadStart(){

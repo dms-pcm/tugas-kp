@@ -36,7 +36,7 @@ function me() {
             idUser = response?.data?.user?.id;
             html+=`<span>${res}</span>`;
             $('#nama_karyawan').html(html);
-            htmlName+=`<span>${res}</span>`;
+            htmlName+=`<span class="fw-bolder text-uppercase">${res}</span>`;
             $('#name-user').html(htmlName);
         },
         error:function(xhr){

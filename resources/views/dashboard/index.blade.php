@@ -74,7 +74,7 @@
                         <div class="col-4">
                             <div class="text-center">
                                 <div class="form-switch d-flex justify-content-center mt-2 mb-1">
-                                    <input class="form-check-input w-46px h-20px" type="checkbox" id="darkSwitch" />
+                                    <input class="form-check-input w-46px h-20px" type="checkbox" id="darkSwitch2" />
                                 </div>
                                 <span class="text-muted" style="font-size:12px;">Night Mode</span>
                             </div>
@@ -139,7 +139,7 @@
                                         </div>
                                         <div class="d-flex flex-center flex-column text-center">
                                             <div class="symbol symbol-100px symbol-circle mb-4" id="foto_profil">
-                                                <img src="{{asset('assets/img/blank.png')}}" alt="image" />
+                                                <img src="{{asset('assets/img/blank.png')}}" alt="image" loading="lazy"/>
                                             </div>
                                             <!-- CARD PROFILE -->
                                             <a class="fs-4 text-gray-800 text-hover-dark fw-bolder" id="nama_karyawan"></a>
@@ -167,7 +167,8 @@
                                         <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div class="float-end" style="margin-right:26px !important;">
-                                                <button type="button" class="btn btn-sm btn-primary" id="buttonupload" data-bs-toggle="modal" data-bs-target="#add_post">Upload</button>
+                                                <!-- <button type="button" class="btn btn-sm btn-primary" id="buttonupload" data-bs-toggle="modal" data-bs-target="#add_post">Upload</button> -->
+                                                <button type="button" class="btn btn-sm btn-primary" id="buttonupload" onclick="upload_post()">Upload</button>
                                             </div>
                                         </div>
                                     </div>
@@ -177,10 +178,10 @@
                                     <div class="container-fluid main-box">
                                         <ul class="row nav nav-tabs nav-line-tabs mb-5 fs-6 ms-5 me-5">
                                             <li class="nav-item col-6">
-                                                <a class="nav-link active text-center" data-bs-toggle="tab" href="#kt_tab_pane_1"><i class="fas fa-images fs-2"></i></a>
+                                                <a class="nav-link active text-center" data-bs-toggle="tab" href="#kt_tab_pane_1"><i class="fas fa-th fs-2"></i></a>
                                             </li>
                                             <li class="nav-item col-6">
-                                                <a class="nav-link text-center" data-bs-toggle="tab" href="#kt_tab_pane_2"><i class="fas fa-video fs-2"></i></a>
+                                                <a class="nav-link text-center" data-bs-toggle="tab" href="#kt_tab_pane_2"><i class="fas fa-play fs-2"></i></a>
                                             </li>
                                         </ul>
                                         <div class="row">
@@ -212,6 +213,7 @@
         <div class="modal fade" id="edit_staff" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered mw-650px">
                 <div class="modal-content">
+                    <input type="hidden" id="id_user">
                     <form class="form" enctype="multipart/form-data" id="data_karyawan">
                         @csrf
                         <div class="modal-header" id="kt_modal_update_user_header">
@@ -245,6 +247,9 @@
                                                         <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel">
                                                             <i class="bi bi-x fs-2"></i>
                                                         </span>
+                                                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" id="del_profile" data-kt-image-input-action="remove">
+                                                            <i class="bi bi-x fs-2"></i>
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -263,6 +268,9 @@
                                                             <input type="file" name="file" accept=".png, .jpg, .jpeg"/>
                                                         </label>
                                                         <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel">
+                                                            <i class="bi bi-x fs-2"></i>
+                                                        </span>
+                                                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" id="del_sampul" data-kt-image-input-action="remove">
                                                             <i class="bi bi-x fs-2"></i>
                                                         </span>
                                                     </div>
@@ -336,8 +344,8 @@
                                     </div>
                                 </div>
                                 <div class="form-floating col-md-9" style="margin-top:2.25rem">
-                                    <textarea maxlength="999" class="form-control" style="height:130px" placeholder="Masukan caption..." id="caption"></textarea>
-                                    <label style="width:100%" for="floatingTextarea" class="ms-2 fw-bolder" id="name-user"></label>
+                                    <textarea maxlength="999" class="form-control fw-light" style="height:130px" placeholder="Masukan caption..." id="caption"></textarea>
+                                    <label style="width:100%" for="floatingTextarea" class="ms-2 fw-bolder text-uppercase" id="name-user"></label>
                                 </div>
                             </div>
                         </div>
