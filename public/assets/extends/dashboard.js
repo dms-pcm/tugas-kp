@@ -55,7 +55,6 @@ function loadStop(){
 function modalEdit() {
     $("#edit_staff").modal('show');
     let cek = $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #jenis_jabatan').val();
-    console.log(cek);
     if (cek == "") {
         $("#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #profile #del_profile").addClass('d-none');
         $("#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #sampul #del_sampul").addClass('d-none');
