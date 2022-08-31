@@ -44,11 +44,16 @@
             .dropdown-menu.show{
                 margin-right: 7px !important;
             }
-            /* .btn{
-                padding:0px !important;
-                border-radius: 0px !important;
-                background-color: none !important;
-            } */
+            .form-floating:before {
+                content: '';
+                position: absolute;
+                top: 1px;
+                left: 11px;
+                width: calc(100% - 22px);
+                height: 22px;
+                border-radius: 4px;
+                background-color: #ffffff;
+            }
             @media screen and (min-width: 320px) and (max-width: 428px) {
                 #title-none{
                     display:none !important;
