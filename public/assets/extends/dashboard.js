@@ -25,7 +25,6 @@ jQuery(document).ready(function () {
     });
     $("#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #sampul #del_sampul").on('click',function () {
         hapusSampul();
-        // $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #sampul .image-input.image-input-empty [data-kt-image-input-action="remove"]').removeClass('d-none');
     });
 });
 
@@ -53,7 +52,15 @@ function loadStop(){
     $('#btn-postingan .indicator-progress').css('display','none')
 }
 
-// const modalShow = (postingan_id) => 
+function modalEdit() {
+    $("#edit_staff").modal('show');
+    let cek = $('#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #jenis_jabatan').val();
+    console.log(cek);
+    if (cek == "") {
+        $("#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #profile #del_profile").addClass('d-none');
+        $("#edit_staff #kt_modal_update_user_scroll #kt_modal_update_user_user_info #sampul #del_sampul").addClass('d-none');
+    }
+}
 
 function me(id) {
     $.ajax({
