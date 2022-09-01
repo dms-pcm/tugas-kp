@@ -20,6 +20,7 @@ use App\Http\Controllers\Api\PostinganController;
 Route::post('login', [AuthController::class, 'login']);
 Route::post('check_token', [AuthController::class, 'check_token'])->name('check_token');
 Route::get('/show-qrcode/{id}',  [KaryawanController::class, 'show_qr']);
+Route::get('/show/{id}',  [PostinganController::class, 'show']);
 
 Route::group(['middleware' => 'jwt.verify'], function () {
     Route::post('/logout', [AuthController::class,'logout']);
@@ -33,7 +34,7 @@ Route::group(['middleware' => 'jwt.verify'], function () {
 
     Route::group(['prefix' => 'postingan'], function () {
         Route::post('/',  [PostinganController::class, 'store']);
-        Route::get('/show',  [PostinganController::class, 'show']);
+        // Route::get('/show',  [PostinganController::class, 'show']);
         Route::get('/show/{id}',  [PostinganController::class, 'show_id']);
         Route::post('/update/{id}',  [PostinganController::class, 'update']);
         Route::delete('/delete/{id}',  [PostinganController::class, 'destroy']);

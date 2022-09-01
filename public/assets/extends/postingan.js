@@ -11,14 +11,14 @@ jQuery(document).ready(function ($) {
 
 function loadStart(){
     //start
-    $('#btn-postingan .indicator-label').css('display','none')
-    $('#btn-postingan .indicator-progress').css('display','block')
+    $('#btn-upload .indicator-label').css('display','none')
+    $('#btn-upload .indicator-progress').css('display','block')
 }
 
 function loadStop(){
     //finished
-    $('#btn-postingan .indicator-label').css('display','block')
-    $('#btn-postingan .indicator-progress').css('display','none')
+    $('#btn-upload .indicator-label').css('display','block')
+    $('#btn-upload .indicator-progress').css('display','none')
 }
 
 function me() {
@@ -92,9 +92,11 @@ function dzUpload() {
         },
         init: function () {
             this.on("error", function (file, response) {
+                loadStop();
                 Swal.fire("Oppss..", response.status.message, "error");
             });
             this.on("resetFiles", function (file) {
+                loadStop();
                 this.removeAllFiles();
             });
         },
@@ -108,10 +110,12 @@ function dzUpload() {
 function upload() {
     var dropzoneUpload=Dropzone.forElement('#postingan');
     dropzoneUpload.on("sending", function (file, xhr, formData) {
+        loadStart();
         formData.append("caption", $('#form-unggah #caption').val());
     });
     dropzoneUpload.processQueue();
     dropzoneUpload.on("success", function (file, res, formData) {
+        loadStop();
         Swal.fire({
             title: "Berhasil!",
             text: res.status.message,
@@ -122,6 +126,7 @@ function upload() {
         this.removeAllFiles();
     });
     dropzoneUpload.on("error", function (file, res, formData) {
+        loadStop();
         Swal.fire({
             title: "Oppss..",
             text: res.status.message+" Gambar Postingan failed to upload.",

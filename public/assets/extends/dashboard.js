@@ -3,8 +3,12 @@ let file_sampul = '';
 let postingan = '';
 jQuery(document).ready(function () {
     loadStop();
+    let cekUrl = $(location).attr('href');
+    let sp1 = cekUrl.split('/');
+    let sp2 = sp1[4].split('#');
+    let id = sp2[0];
     $('#back_2').on('click',function(){
-        window.location.href = `${baseUrl}dashboard/${localStorage.getItem("userID")}`
+        window.location.href = `${baseUrl}dashboard/${id}`
     });
     if (!localStorage.getItem("token")) {
         $('.dropdown-navbar').addClass('d-none');

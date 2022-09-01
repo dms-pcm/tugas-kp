@@ -139,7 +139,12 @@
                         </form>
                         <div class="row">
                             <div class="mt-4">
-                                <button class="btn btn-success float-end" onclick="upload()">Upload</button>
+                                <!-- <button class="btn btn-success float-end" onclick="upload()">Upload</button> -->
+                                <button type="button" id="btn-upload" class="btn btn-success float-end" onclick="upload()">
+                                    <span class="indicator-label">Upload</span>
+                                    <span class="indicator-progress">Please wait...
+                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                </button>
                             </div>
                         </div>
                     </div>

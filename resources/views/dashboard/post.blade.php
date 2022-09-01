@@ -214,8 +214,12 @@
             });
 
             function show_detail() {
+                let cekUrl = $(location).attr('href');
+                let sp1 = cekUrl.split('/');
+                let sp2 = sp1[4].split('#');
+                let id = sp2[0];
                 $.ajax({
-                    url:`${urlApi}postingan/show`,
+                    url:`${urlApi}show/${id}`,
                     type:'GET',
                     headers: {
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -268,15 +272,28 @@
                                 `;
                             }else{
                                 let htmlan = '';
+                                let htmlButton = '';
                                 for (let index = 0; index < erer.length; index++) {
                                     const element = erer[index] + '<br>';
                                     htmlan+=`
                                         ${element}
                                     `;
                                 }
-                                htmlPost+=`
-                                <div id="postingan-${elements?.id}" class="garis">
-                                    <img src="${baseUrl}/storage/${elements?.attachment}" style="max-width:100%;height:auto;" alt="..." loading="lazy">
+                                if (!localStorage.getItem("token")) {
+                                    console.log('masuk ga');
+                                    htmlButton+=`
+                                    <div class="dropdown dots d-none">
+                                        <button class="btn dropdown-toggle float-end asasa" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fs-2 text-danger"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" onclick="showModal(${idPost})"><i class="fas fa-pencil-alt me-2 text-warning"></i> Edit</a></li>
+                                            <li><a class="dropdown-item" onclick="hapus(${idPost})"><i class="fas fa-trash me-2 text-danger"></i> Delete</a></li>
+                                        </ul>
+                                    </div>
+                                    `;
+                                }else {
+                                    htmlButton+=`
                                     <div class="dropdown dots">
                                         <button class="btn dropdown-toggle float-end asasa" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="fas fa-ellipsis-v fs-2 text-danger"></i>
@@ -286,6 +303,12 @@
                                             <li><a class="dropdown-item" onclick="hapus(${idPost})"><i class="fas fa-trash me-2 text-danger"></i> Delete</a></li>
                                         </ul>
                                     </div>
+                                    `;
+                                }
+                                htmlPost+=`
+                                <div id="postingan-${elements?.id}" class="garis">
+                                    <img src="${baseUrl}/storage/${elements?.attachment}" style="max-width:100%;height:auto;" alt="..." loading="lazy">
+                                    `+htmlButton+`
                                     <div class="card-body" style="padding:7px !important; padding-top:0px !important; margin-top:4px;">
                                         <div class="row" id="work">
                                             <div class="col-7">

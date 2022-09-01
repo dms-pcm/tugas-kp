@@ -219,15 +219,45 @@ class PostinganController extends Controller
         return response()->json($this->getResponse(), $this->responseCode);
     }
 
-    public function show()
+    // public function show()
+    // {
+    //     try {
+    //         $userId = Auth::id();
+    //         $data = Postingan::where('created_by',$userId)->first();
+    //         $data_postingan = Postingan::where('created_by',$userId)
+    //                         ->orderBy('id','DESC')
+    //                         ->get();
+    //         $nama = User::select('name')->where('id',$userId)->first();
+            
+    //         if (empty($data)) {
+    //             $this->responseCode = 400;
+    //             $this->responseMessage = 'Postingan tidak ditemukan';
+
+    //             return response()->json($this->getResponse(), $this->responseCode);
+    //         }
+
+    //         $this->responseCode = 200;
+    //         $this->responseMessage = 'Postingan ditemukan.';
+    //         $this->responseData['data_postingan'] = $data_postingan;
+    //         $this->responseData['nama_user'] = $nama;
+
+    //         return response()->json($this->getResponse(), $this->responseCode);
+    //     } catch (\Exception $ex) {
+    //         $this->responseCode = 500;
+    //         $this->responseMessage = $ex->getMessage();
+
+    //         return response()->json($this->getResponse(), $this->responseCode);
+    //     }
+    // }
+
+    public function show($id)
     {
         try {
-            $userId = Auth::id();
-            $data = Postingan::where('created_by',$userId)->first();
-            $data_postingan = Postingan::where('created_by',$userId)
+            $data = Postingan::where('created_by',$id)->first();
+            $data_postingan = Postingan::where('created_by',$id)
                             ->orderBy('id','DESC')
                             ->get();
-            $nama = User::select('name')->where('id',$userId)->first();
+            $nama = User::select('name')->where('id',$id)->first();
             
             if (empty($data)) {
                 $this->responseCode = 400;

@@ -113,7 +113,7 @@
                                                 <div class="dropdown-navbar float-end">
                                                     <i class="fas fa-ellipsis-v text-light fs-2"></i>
                                                     <div class="dropdown-isi">
-                                                        <div data-bs-toggle="modal" data-bs-target="#edit_staff" class="d-flex align-items-center text-muted fw-bold">
+                                                        <div onclick="modalEdit()" class="d-flex align-items-center text-muted fw-bold">
                                                             <span class="svg-icon svg-icon-warning svg-icon-2 me-3" id="color-svg1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                                     <path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="black"/>
@@ -240,14 +240,14 @@
                                                 <div class="mt-1">
                                                     <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('{{asset('assets/img/blank.png')}}');">
                                                         <div class="image-input-wrapper w-125px h-125px" style="background-image: url('{{asset('assets/img/blank.png')}}');" id="ada_data"></div>
-                                                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" id="circle" data-kt-image-input-action="change">
+                                                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow circle" data-kt-image-input-action="change">
                                                             <i class="bi bi-pencil-fill fs-7"></i>
                                                             <input type="file" name="file" accept=".png, .jpg, .jpeg"/>
                                                         </label>
-                                                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel">
+                                                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow circle" data-kt-image-input-action="cancel">
                                                             <i class="bi bi-x fs-2"></i>
                                                         </span>
-                                                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" id="del_profile" data-kt-image-input-action="remove">
+                                                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow circle" id="del_profile" data-kt-image-input-action="remove">
                                                             <i class="bi bi-x fs-2"></i>
                                                         </span>
                                                     </div>
@@ -263,14 +263,14 @@
                                                 <div class="mt-1">
                                                     <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('{{asset('assets/img/no-image.jpg')}}');">
                                                         <div class="image-input-wrapper w-125px h-125px" style="background-image: url('{{asset('assets/img/no-image.jpg')}}');" id="sampul_data"></div>
-                                                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" id="circle" data-kt-image-input-action="change">
+                                                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow circle" data-kt-image-input-action="change">
                                                             <i class="bi bi-pencil-fill fs-7"></i>
                                                             <input type="file" name="file" accept=".png, .jpg, .jpeg"/>
                                                         </label>
-                                                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel">
+                                                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow circle" data-kt-image-input-action="cancel">
                                                             <i class="bi bi-x fs-2"></i>
                                                         </span>
-                                                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" id="del_sampul" data-kt-image-input-action="remove">
+                                                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow circle" id="del_sampul" data-kt-image-input-action="remove">
                                                             <i class="bi bi-x fs-2"></i>
                                                         </span>
                                                     </div>
