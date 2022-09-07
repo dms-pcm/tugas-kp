@@ -14,16 +14,15 @@
 		<link href="{{asset('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 	</head>
 	<body id="kt_body" class="bg-gray">
-		<div class="d-flex flex-column flex-root">
-			<div class="d-flex flex-column flex-lg-row flex-column-fluid">
-				<div class="d-flex flex-column flex-center">
-					<div class="col-md-6 mt-6">
+		<div class="d-flex align-items-center" style="height:100vh;">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-md-5">
 						<img src="{{ asset('assets/img/login.png') }}" class="img-fluid"  />
 					</div>
-				</div>
-				<div class="d-flex flex-column flex-lg-row-fluid py-10">
-					<div class="d-flex flex-center flex-column flex-column-fluid">
-						<div class="w-lg-450px p-10 p-lg-6 mx-auto bg-white shadow p-3 mb-5 bg-body rounded">
+					<div class="col-md-2 text-center"></div>
+					<div class="col-md-5 contents bg-white shadow mb-5 bg-body rounded" style="padding:2.5rem">
+						<div class="form-block">
 							<form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" method="POST">
 								@csrf
 								<div class="text-left mb-10">
@@ -51,7 +50,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<script src="{{asset('assets/js/jquery.min.js')}}"></script>
 		<script src="{{asset('assets/plugins/plugins.bundle.js')}}"></script>
 		<script src="{{asset('assets/js/scripts.bundle.js')}}"></script>
