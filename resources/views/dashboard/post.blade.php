@@ -253,7 +253,7 @@
                             if (elements?.caption == null) {
                                 htmlPost+=`
                                 <div id="postingan-${elements?.id}" class="garis">
-                                    <img src="${baseUrl}/storage/${elements?.attachment}" style="padding-top:20px;max-width:100%;height:auto;" alt="..." loading="lazy">
+                                    <img src="${baseUrl}/storage/${elements?.attachment}" style="width:100%;height:auto;" alt="..." loading="lazy">
                                     <div class="card-body" style="padding:7px !important; padding-top:0px !important; margin-top:4px;">
                                         <div class="row" id="work">
                                             <div class="col-7">
@@ -307,7 +307,7 @@
                                 }
                                 htmlPost+=`
                                 <div id="postingan-${elements?.id}" class="garis">
-                                    <img src="${baseUrl}/storage/${elements?.attachment}" style="max-width:100%;height:auto;" alt="..." loading="lazy">
+                                    <img src="${baseUrl}/storage/${elements?.attachment}" style="width:100%;height:auto;" alt="..." loading="lazy">
                                     `+htmlButton+`
                                     <div class="card-body" style="padding:7px !important; padding-top:0px !important; margin-top:4px;">
                                         <div class="row" id="work">
