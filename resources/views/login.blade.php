@@ -17,11 +17,11 @@
 		<div class="d-flex align-items-center" style="height:100vh;">
 			<div class="container">
 				<div class="row align-items-center">
-					<div class="col-md-5">
+					<div class="col-xl-5 col-md-12">
 						<img src="{{ asset('assets/img/login.png') }}" class="img-fluid"  />
 					</div>
-					<div class="col-md-2 text-center"></div>
-					<div class="col-md-5 contents bg-white shadow mb-5 bg-body rounded" style="padding:2.5rem">
+					<div class="col-xl-2 col-md-12 text-center"></div>
+					<div class="col-xl-5 col-md-12 contents bg-white shadow mb-5 bg-body rounded" style="padding:2.5rem">
 						<div class="form-block">
 							<form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" method="POST">
 								@csrf
@@ -50,7 +50,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<script src="{{asset('assets/js/jquery.min.js')}}"></script>
 		<script src="{{asset('assets/plugins/plugins.bundle.js')}}"></script>
 		<script src="{{asset('assets/js/scripts.bundle.js')}}"></script>

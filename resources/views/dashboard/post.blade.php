@@ -310,14 +310,12 @@
                                     <img src="${baseUrl}/storage/${elements?.attachment}" style="width:100%;height:auto;" alt="..." loading="lazy">
                                     `+htmlButton+`
                                     <div class="card-body" style="padding:7px !important; padding-top:0px !important; margin-top:4px;">
-                                        <div class="row" id="work">
-                                            <div class="col-7">
+                                        <div class="row justify-content-between" id="work">
+                                            <p>
                                                 <span> Work at</span>
                                                 <span class="text-uppercase fw-bolder" style="color:#6610f2;">Burningroom Technology</span>
-                                            </div>
-                                            <div class="col-5">
                                                 <span class="float-end"> ${format}</span>
-                                            </div>
+                                            </p>
                                         </div>
                                         <div class="caption mt-4">
                                             <p style="word-break: break-all;"><span class="text-uppercase fw-bolder me-2">${name}</span>`+htmlan+`</p>
